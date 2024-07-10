@@ -52,11 +52,11 @@ const AllCountries = ({clearSelectedRegionHandler, selectedRegion}) => {
                         />
                         <CardContent>
                             <Typography gutterBottom variant="h5" component="div">
-                            {country.name.common}
-                            </Typography>
-                            <Typography variant="body2" color="text.secondary">
-                            {`Subregion: ${country.subregion}, Capital: ${country.capital[0]}, Population: ${country.population}, Language:${Object.values(country.languages).join(', ')}`}
-                            </Typography>
+                                {country.name.common}
+                                </Typography>
+                                <Typography variant="body2" color="text.secondary">
+                                {`Subregion: ${country.subregion}, Capital: ${country.capital ? country.capital[0] : 'N/A'}, Population: ${country.population.toLocaleString()}, Language: ${country.languages ? Object.values(country.languages).join(', ') : 'N/A'}`}
+                                </Typography>
                         </CardContent>
                         </Card>
                     </Grid>

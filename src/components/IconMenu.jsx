@@ -5,28 +5,37 @@ import MenuList from '@mui/material/MenuList';
 import MenuItem from '@mui/material/MenuItem';
 import ListItemText from '@mui/material/ListItemText';
 
-
-const IconMenu = ({ anchorEl, handleClose }) => {
+const IconMenu = ({ anchorEl, handleClose, handleSortByLanguage, handleViewAll, handleSortByPopulation, menuRef }) => {
   return (
-    <Paper 
-    sx={{ 
-        width: 320, 
-        maxWidth: '100%', 
+    <Paper
+      ref={menuRef}
+      sx={{
+        width: 320,
+        maxWidth: '100%',
         position: 'absolute',
         top: anchorEl?.getBoundingClientRect().bottom,
         left: anchorEl?.getBoundingClientRect().left,
-        rIndex: 1300
-        }}>
-            
+        zIndex: 1300
+      }}
+    >
       <MenuList>
-        <MenuItem onClick={handleClose}>
+        <MenuItem onClick={() => {
+          handleClose();
+          handleSortByPopulation();
+        }}>
           <ListItemText>Sort Countries by Population</ListItemText>
         </MenuItem>
-        <MenuItem onClick={handleClose}>
+        <MenuItem onClick={() =>{
+          handleClose();
+          handleSortByLanguage();
+        }}>
           <ListItemText>Sort Countries by Language</ListItemText>
         </MenuItem>
         <Divider />
-        <MenuItem onClick={handleClose}>
+        <MenuItem onClick={() => {
+          handleClose();
+          handleViewAll();
+        }}>
           <ListItemText>View all Countries</ListItemText>
         </MenuItem>
       </MenuList>
